@@ -6,5 +6,6 @@ export interface UserRegister {
     password: String,
     address: String,
     phone: String,
-    dob: Date,
+    dob: String, 
+    license: String, 
 }

@@ -15,6 +15,6 @@ export class UserService {
   url: string = 'http://localhost:3000/api/user'
 
   register(data:UserRegister){
-    return this.http.post(`${this.url}/register`,data)
+    return this.http.post(`${this.url}`,data)
   }
 }
