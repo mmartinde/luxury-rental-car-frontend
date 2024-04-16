@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: "register-form",
+        path: "register",
         component: RegisterComponent
     }
 ];

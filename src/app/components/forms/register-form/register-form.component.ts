@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class RegisterFormComponent {
 
+  //console.log("funciona");
+  
+
 }
