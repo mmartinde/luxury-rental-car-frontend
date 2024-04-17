@@ -8,13 +8,21 @@
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input formControlName="email"   type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input formControlName="email" type="email" class="form-control" id="email"
+                                placeholder="Enter email">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input formControlName="password"  [type]="hidePassword? 'password':'text'" class="form-control" id="password" placeholder="Password">
+                            <div class="input-group">
+                                <input formControlName="password" [type]="hidePassword? 'password':'text'"
+                                    class="form-control" id="password" placeholder="Password">
+                                <button type="button" class="btn btn-outline-secondary"
+                                    (click)="hidePassword=!hidePassword">
+                                    <fa-icon [icon]="faEyeSlash" size="2xs"></fa-icon>
+                                </button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" (click)="hidePassword=!hidePassword" >Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

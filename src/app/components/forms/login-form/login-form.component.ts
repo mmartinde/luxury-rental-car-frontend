@@ -11,17 +11,20 @@ import {
 } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../../services/user.service.spec';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, FontAwesomeModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
 })
 export class LoginFormComponent {
   showLoginForm: boolean = true;
   hidePassword: boolean = true;
+  faEyeSlash = faEyeSlash ;
 
   ngOnInit() {}
 
