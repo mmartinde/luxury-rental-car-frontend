@@ -1,12 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Luxury Cars Rentals</a>
-        <button type="button" class="navbar-toggler" (click)="collapse.toggle()"[attr.aria-expande]="!isCollapsed" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button" class="navbar-toggler" (click)="collapse.toggle()" [attr.aria-expande]="!isCollapsed"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                @if ((isToken && isAdmin)){
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/cars">Admin Coches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/rent">Admin Alquileres</a>
+                </li>
+                }
+                @if(isToken){
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/user">Admin User</a>
+                </li>
+                <button class="btn btn-sm btn-outline-secondary" type = "button" (click) = "doLogout()" routerLink="/">Cerrar Sesión</button>
+                }@else{
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
                 </li>
@@ -14,14 +28,15 @@
                     <a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/register">Registrate</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Acerca de</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contacto</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link"href="/register">Registrate</a>
-                </li>
+                }
             </ul>
         </div>
     </div>
