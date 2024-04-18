@@ -13,6 +13,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrl: './register-form.component.scss'
 })
 
+/* Component to manage the Form data */
+
 export class RegisterFormComponent {
                  
   registerForm: FormGroup = this.formBuilder.group({
@@ -31,6 +33,8 @@ export class RegisterFormComponent {
     private userService: UserService,
     private router : Router
   ){}
+
+  /* Function to collect the value of the inputs in the form  */
   
   doRegister(){
     const data :UserRegister={
