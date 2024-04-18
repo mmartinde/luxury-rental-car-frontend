@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,4 +14,5 @@ import { RegisterComponent } from './pages/register/register.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  
 }
