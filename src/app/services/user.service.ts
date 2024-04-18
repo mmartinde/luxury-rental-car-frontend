@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserLogin } from '../../app/interfaces/forms-data/user-login';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, Subject } from 'rxjs';
+import { UserRegister } from '../interfaces/forms-data/user-register';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,10 @@ export class UserService {
 
   deleteUser(id:string){
     return this.http.delete(`${this.url}/${id}?token=${this.cookies.get('token')}`)
+  }
+
+  register (data :UserRegister){
+    return this.http.post(`${this.url}`,data)
   }
 
 }
