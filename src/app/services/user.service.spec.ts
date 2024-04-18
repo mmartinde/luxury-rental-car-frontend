@@ -26,7 +26,7 @@ export class UserService {
     return this.tokenSubject.asObservable();
   }
 
-  url: string = 'http://localhost:3000/api/users';
+  url: string = 'http://localhost:3000/api/user';
 
   login(data: UserLogin) {
     return this.http.post(`${this.url}/login`, data);
