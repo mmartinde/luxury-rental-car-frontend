@@ -50,7 +50,7 @@ export class LoginFormComponent {
       this.userService.login(data).subscribe({
         next: (res: any) => {
           this.userService.setTokenRole(res.token, res.role),
-            this.router.navigate(['/']); //navega a la ruta privada que tenda destinada ese rol
+            this.router.navigate(['/car']); //navega a la ruta privada que tenda destinada ese rol
           console.log(res);
         },
         error: (err) => console.log(err),
