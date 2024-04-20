@@ -49,7 +49,7 @@ export class LoginFormComponent {
 
       this.userService.login(data).subscribe({
         next: (res: any) => {
-          this.userService.setTokenRole(res.token, res.role),
+          this.userService.setTokenRole(res.result.token, res.result.role),
             this.router.navigate(['/car']); //navega a la ruta privada que tenda destinada ese rol
           console.log(res);
         },
