@@ -1,10 +1,15 @@
-<p>car works!</p>
-
-<div class="card">
-    <img src="https://www.km77.com/images/medium/5/8/7/7/mercedes-benz-clase-s-2021-frontal-lateral.355877.jpg" alt="">
-    <div class="card-body">
-        <h5 class="card-title">Modelo</h5>
-        <p></p>
+@if(isLoading){
+    <p>loading...</p>
+} @else {
+    <div class="card">
+        <img src="https://www.km77.com/images/medium/5/8/7/7/mercedes-benz-clase-s-2021-frontal-lateral.355877.jpg" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{ car?.model }}</h5>
+            <h5 class="card-title">{{ car?.make }}</h5>
+            <p>{{ car?.description }}</p>
+        </div>
+    
     </div>
 
-</div>
+}
+

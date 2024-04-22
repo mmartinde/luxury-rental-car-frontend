@@ -8,18 +8,16 @@ import { CarsService } from '../../services/cars.service';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './cars.component.html',
-  styleUrl: './cars.component.scss'
+  styleUrl: './cars.component.scss',
 })
 export class CarsComponent implements OnInit {
-  cars: Cars[]=[]
-  constructor(private carsService: CarsService){}
+  cars: Cars[] = [];
+  constructor(private carsService: CarsService) {}
+  
   ngOnInit(): void {
     this.carsService.getAllCars().subscribe({
-      next:(res) => this.cars = res as Cars[],
-      error:(err) => console.log('No se han podido cargar nuestos Vehiculos'),
-      
-    })
+      next: (res) => (this.cars = res as Cars[]),
+      error: (err) => console.log('No se han podido cargar nuestos Vehiculos'),
+    });
   }
-
-
 }
