@@ -5,6 +5,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CarsComponent } from './pages/cars/cars.component';
 import { CarComponent } from './pages/car/car.component';
+import { adminProtectGuard } from './guards/admin-protect.guard';
+import { userProtectGuard } from './guards/user-protect.guard';
 
 export const routes: Routes = [
     {
@@ -25,11 +27,13 @@ export const routes: Routes = [
     },
     {
         path:'cars',
-        component:CarsComponent
+        component:CarsComponent,
+        canActivate:[adminProtectGuard, userProtectGuard]
     },
     {
         path:'car',
-        component:CarComponent
+        component:CarComponent,
+        canActivate:[adminProtectGuard, userProtectGuard]
     },
     { 
         path: '**', 
