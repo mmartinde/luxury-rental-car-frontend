@@ -4,9 +4,15 @@
     <div class="card">
         <img src="https://www.km77.com/images/medium/5/8/7/7/mercedes-benz-clase-s-2021-frontal-lateral.355877.jpg" alt="">
         <div class="card-body">
-            <h5 class="card-title">{{ car?.model }}</h5>
             <h5 class="card-title">{{ car?.make }}</h5>
-            <p>{{ car?.description }}</p>
+            <h5 class="card-title">{{ car?.model }}</h5>
+            <i class="fa fa-car fa-bounce"></i><p> <strong> Año: </strong>{{ car?.year }}</p>
+            <i class="fa-solid fa-bolt-lightning fa-bounce"></i> <p><strong> HP: </strong>{{ car?.hp }}</p>
+            <i class="fa-solid fa-engine"></i><p><strong> CC: </strong>{{ car?.cc }}</p>
+            <i class="fa fa-users fa-bounce "></i><p><strong> Asientos: </strong>{{ car?.seats }}</p>
+            <i class="fa fa-code-fork fa-bounce"></i><p><strong> Transmisión: </strong>{{ car?.transmission }}</p>
+            <p class="card-text">{{ car?.description }}</p>
+            <button class="rent-button">Solicitar Reserva</button>
         </div>
     
     </div>

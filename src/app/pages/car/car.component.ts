@@ -16,50 +16,50 @@ export class CarComponent {
   carId: string = '';
   isLoading = true;
  
-  constructor(private carService: CarsService, private route: ActivatedRoute) {
-    this.route.params.pipe(
-      switchMap((params: Params) => {
-        this.carId = params['id'];
-        console.log(this.carId);
-        return this.carService.getCarById(this.carId);
-      })
-    ).subscribe({
-      next: (car) => {
-        this.car = car as Cars;
-        this.isLoading = false;
-      },
-      error: (err) => console.log('Error fetching car:', err)
-    });
-  }
-  
   // constructor(private carService: CarsService, private route: ActivatedRoute) {
-  //   this.route.params.subscribe({
-  //     next: (res: any) => {
-  //       this.carId = res.id;
-  //       console.log(this.carId)
-  //       this.carService.getCarById(this.carId).subscribe({
-  //         next: (res) => (this.post = res as Cars, this.isLoading = false),
-  //         error: (err) => console.log(err),
-  //       });
+  //   this.route.params.pipe(
+  //     switchMap((params: Params) => {
+  //       this.carId = params['id'];
+  //       return this.carService.getCarById(this.carId);
+  //     })
+  //   ).subscribe({
+  //     next: (car) => {
+  //       this.car = car as Cars;
+  //       this.isLoading = false;
   //     },
-  //   })
-  //     }
-
-  // ngOnInit(): void {
-  //   // this.getCar
+  //     error: (err) => console.log('Error fetching car:', err)
+  //   });
   // }
+  
+  constructor(private carService: CarsService, private route: ActivatedRoute) {
+    this.route.params.subscribe({
+      next: (res: any) => {
+        this.carId = res.id;
+        console.log(this.carId)
+        this.carService.getCarById(this.carId).subscribe({
+          next: (res) => (this.car = res as Cars, this.isLoading = false),
+          error: (err) => console.log(err),
+        });
+      },
+    })
+      }
 
-  // getCar(): void {
-  //   if (id) {
-  //     this.route.paramMap.subscribe((params) => {
-  //       const id = params.get('id');
-  //       if (id) {
-  //         this.carService.getCarById(id).subscribe({
-  //           next: (res) => (this.car = res as ),
-  //           error: (err) => console.log('No se ha encontrado el vehículo'),
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
+  // // ngOnInit(): void {
+  // //   // this.getCar
+  // // }
+
+  // // getCar(): void {
+  // //   if (id) {
+  // //     this.route.paramMap.subscribe((params) => {
+  // //       const id = params.get('id');
+  // //       if (id) {
+  // //         this.carService.getCarById(id).subscribe({
+  // //           next: (res) => (this.car = res as Cars ),
+  //                   this.isLoading = false
+  // //           error: (err) => console.log('No se ha encontrado el vehículo'),
+  // //         });
+  // //       }
+  // //     });
+  // //   }
+  // // }
 }
