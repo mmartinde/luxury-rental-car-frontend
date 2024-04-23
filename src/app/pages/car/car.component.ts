@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { CarsService } from '../../services/cars.service';
 import { Cars } from '../../interfaces/cars';
 import { switchMap } from 'rxjs';
@@ -31,7 +31,7 @@ export class CarComponent {
   //   });
   // }
   
-  constructor(private carService: CarsService, private route: ActivatedRoute) {
+  constructor(private carService: CarsService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe({
       next: (res: any) => {
         this.carId = res.id;
@@ -62,4 +62,8 @@ export class CarComponent {
   // //     });
   // //   }
   // // }
+  
+  goToReservation(): void {
+    this.router.navigate(['/contact'])
+  }
 }
