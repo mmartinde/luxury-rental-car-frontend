@@ -32,7 +32,7 @@ export const routes: Routes = [
         canActivate:[adminProtectGuard, userProtectGuard]
     },
     {
-        path:'car',
+        path:'cars/:id',
         component:CarComponent,
         canActivate:[adminProtectGuard, userProtectGuard]
     },
