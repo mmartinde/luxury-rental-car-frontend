@@ -1,0 +1,27 @@
+<div class="contenedor">
+    <form class="titleInputAndButtonUsers form-inline" [formGroup]="searcherUser" (ngSubmit)="searchUser()">
+        <label class="mr-2">Filtra los usuarios por nombre</label>
+        <div class="input-group">
+            <input type="text" class="form-control" formControlName="user" placeholder="Introduzca nombre" />
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>ID</th>
+                <th>Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user.id){
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.id }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

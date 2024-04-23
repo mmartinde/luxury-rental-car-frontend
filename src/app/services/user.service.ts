@@ -55,7 +55,15 @@ export class UserService {
   }
 
   getAllUsers(){
-    return (this.http.get(`${this.url}?token=${this.cookies.get('token')}`));
+    return (this.http.get(`${this.url}?token=${this.cookies.get('token')}`))
+  }
+
+  getUserById(id:string){
+    return this.http.get(`${this.url}/${id}?token=${this.cookies.get('token')}`)
+  }
+
+  updateUser(id:string){
+    return this.http.put(`${this.url}/${id}?token=${this.cookies.get('token')}`,JSON.stringify({"name": "test"})) //esta linea esta mal, hay que revisarla
   }
 
   deleteUser(id:string){

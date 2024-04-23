@@ -7,6 +7,7 @@ import { CarsComponent } from './pages/cars/cars.component';
 import { CarComponent } from './pages/car/car.component';
 import { adminProtectGuard } from './guards/admin-protect.guard';
 import { userProtectGuard } from './guards/user-protect.guard';
+import { AdminUserComponent } from './pages/admin-user/admin-user.component';
 
 export const routes: Routes = [
     {
@@ -34,6 +35,11 @@ export const routes: Routes = [
         path:'car',
         component:CarComponent,
         canActivate:[adminProtectGuard, userProtectGuard]
+    },
+    {
+        path:"adminUsers",
+        component:AdminUserComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
     },
     { 
         path: '**', 
