@@ -9,17 +9,19 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th>id</th>
                 <th>Nombre de Usuario</th>
-                <th>ID</th>
+                <th>E-mail</th>
                 <th>Rol</th>
             </tr>
         </thead>
         <tbody>
             @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user.id){
                 <tr>
+                    <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
-                    <td>{{ user.id }}</td>
+                    <td>{{ user.role }}</td>
                 </tr>
             }
         </tbody>
