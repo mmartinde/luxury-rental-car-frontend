@@ -51,10 +51,12 @@ export class LoginFormComponent {
         next: (res: any) => {
           this.userService.setTokenRole(res.result.token, res.result.role),
             this.router.navigate(['/car']); //navega a la ruta privada que tenda destinada ese rol
-          console.log(res);
+          console.log(res.result.email._id);
         },
         error: (err) => console.log(err),
       });
     }
   }
+
+
 }

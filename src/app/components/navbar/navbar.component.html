@@ -12,11 +12,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/rent">Admin Alquileres</a>
                 </li>
-                }
-                @if(isToken){
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/adminUsers">Admin Usuarios</a>
                 </li>
+                }
+                @if(isToken){
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/user">Usuarios</a>
+                    </li> 
                 <button class="btn btn-sm btn-outline-secondary" type = "button" (click) = "doLogout()" routerLink="/">Cerrar Sesión</button>
                 }@else{
                 <li class="nav-item">
