@@ -6,7 +6,7 @@
     
 </form>
     <div class="container">
-        @for (car of (carsFiltered.length > 0 ? carsFiltered : cars); track car.id){
+        @for (car of (carsFiltered.length > 0 ? carsFiltered : cars); track car._id){
             
                         <app-card [car]="car"></app-card>
         }
