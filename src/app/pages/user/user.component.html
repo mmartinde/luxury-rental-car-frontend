@@ -3,19 +3,19 @@
         <li [ngbNavItem]="1">
             <button ngbNavLink>Lista Usuarios</button>
             <ng-template ngbNavContent>
-                <p>Lsita de usuarios registrados en la BBDD</p>
+                <app-users></app-users>
             </ng-template>
         </li>
         <li [ngbNavItem]="2">
             <button ngbNavLink>Buscar Usuario</button>
             <ng-template ngbNavContent>
-                <app-form-find-user></app-form-find-user>
+                <p>ficha 2</p>
             </ng-template>
         </li>
         <li [ngbNavItem]="3">
             <button ngbNavLink>Borrar Usuarios</button>
             <ng-template ngbNavContent>
-                <app-form-delete-user></app-form-delete-user>
+                <p>ficha 3</p>
             </ng-template>
         </li>
     </ul>

@@ -8,17 +8,18 @@
         <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 @if ((isToken && isAdmin)){
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/cars">Admin Coches</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/rent">Admin Alquileres</a>
                 </li>
-                }
-                @if(isToken){
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/adminUsers">Admin Usuarios</a>
                 </li>
+                }
+                @if(isToken){
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/user">Usuarios</a>
+                    </li> 
                 <button class="btn btn-sm btn-outline-secondary" type = "button" (click) = "doLogout()" routerLink="/">Cerrar Sesión</button>
                 }@else{
                 <li class="nav-item">
@@ -29,6 +30,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/register">Registrate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/cars">Coches</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Acerca de</a>
