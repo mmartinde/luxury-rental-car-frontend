@@ -1,0 +1,16 @@
+<form [formGroup]="searcherCars" (ngSubmit)="searchCar()" >
+    <div class="input-group search">
+        <input type="text" placeholder="Buscar..." formControlName="car" class="form-control">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+    
+</form>
+    <div class="container">
+        @for (car of (carsFiltered.length > 0 ? carsFiltered : cars); track car.id){
+            
+                        <app-card [car]="car"></app-card>
+        }
+    </div>
+
+
+    
