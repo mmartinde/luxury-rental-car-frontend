@@ -43,6 +43,21 @@ export const routes: Routes = [
         component:AdminUserComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
     },
+    {
+        path:"adminCars",
+        component:AdminCarComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminCars/editCar/:id",
+        component:EditCarComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminCars/addCar",
+        component:AddCarComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
     { 
         path: '**', 
         redirectTo: 'not-found'  // Redirecciona todas las rutas no encontradas a 'not-found'

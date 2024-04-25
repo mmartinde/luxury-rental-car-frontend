@@ -70,10 +70,10 @@ export class FindCarComponent implements OnInit {
   }
 
   navigateToEditCar(carId: string): void {
-    this.route.navigate([`/editCar/${carId}`]);
+    this.route.navigate([`adminCars/editCar/${carId}`]);
   }
   navigateToAddCar(): void {
-    this.route.navigate([`/addCar`]);
+    this.route.navigate([`adminCars/addCar`]);
   }
 
   deleteCar(carId: string): void {
