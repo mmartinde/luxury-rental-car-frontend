@@ -4,6 +4,7 @@ import { UserLogin } from '../../app/interfaces/forms-data/user-login';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, Subject } from 'rxjs';
 import { UserRegister } from '../interfaces/forms-data/user-register';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -61,8 +62,8 @@ export class UserService {
     return this.http.get(`${this.url}/${id}?token=${this.cookies.get('token')}`)
   }
 
-  updateUser(id:string){
-    return this.http.put(`${this.url}/${id}?token=${this.cookies.get('token')}`,JSON.stringify({"name": "test"})) //esta linea esta mal, hay que revisarla
+  updateUser(id:string, user:User){
+    return this.http.put(`${this.url}/${id}?token=${this.cookies.get('token')}`,user) //esta linea esta mal, hay que revisarla
   }
 
   deleteUser(id:string){
