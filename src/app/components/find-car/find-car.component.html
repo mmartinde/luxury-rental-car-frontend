@@ -3,6 +3,22 @@
         <input type="text" placeholder="Buscar..." formControlName="car" class="form-control">
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
+    <div class="">
+        <fieldset>Selecciona por transmisión: </fieldset>
+            <select name="" id="" formControlName="transmission" (click)="searchCarTransmission()" >
+                <option value="select" >-Selecionar-</option>
+                <option value="Automatic" >Automatica</option>
+                <option value="Manual">Manual</option>
+            </select>
+    </div>
+    <div>
+        <fieldset id="">Selecciona por Potencia</fieldset>
+        <select name="" id="" formControlName="power" (click)="searchCarPower()" >
+            <option value="select">-Seleccionar-</option>
+            <option value="descendant">De mayor a menor</option>
+            <option value="ascendant">De menor a mayor</option>
+        </select>
+    </div>
     
 </form>
     <div class="container">
