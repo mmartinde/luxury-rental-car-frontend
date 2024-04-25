@@ -9,13 +9,11 @@ import { UserRegister } from '../interfaces/forms-data/user-register';
   providedIn: 'root'
 })
 
-
-
 export class UserService {
 
   private roleSubject: Subject<string> = new Subject<string>();
   private tokenSubject: Subject<string> = new Subject<string>();
-
+  
   constructor(private http:HttpClient, private cookies:CookieService) {
     const role = this.cookies.get('role')
     this.roleSubject.next(role)
@@ -32,6 +30,7 @@ export class UserService {
 
   url:string ='http://localhost:3000/api/user'
   
+
   login(data:UserLogin){
     return this.http.post(`${this.url}/login`,data)
   }

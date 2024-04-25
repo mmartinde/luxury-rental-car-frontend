@@ -9,6 +9,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
+  //[x: string]: string | undefined;
   private roleSubject: Subject<string> = new Subject<string>();
   private tokenSubject: Subject<string> = new Subject<string>();
 

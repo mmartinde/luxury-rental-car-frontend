@@ -12,7 +12,7 @@ import {
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../../services/user.service.spec';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login-form',
@@ -25,6 +25,7 @@ export class LoginFormComponent {
   showLoginForm: boolean = true;
   hidePassword: boolean = true;
   faEyeSlash = faEyeSlash ;
+
 
   ngOnInit() {}
 
@@ -50,8 +51,8 @@ export class LoginFormComponent {
       this.userService.login(data).subscribe({
         next: (res: any) => {
           this.userService.setTokenRole(res.result.token, res.result.role),
-            this.router.navigate(['/car']); //navega a la ruta privada que tenda destinada ese rol
-          console.log(res.result.email._id);
+            this.router.navigate(['/user']);//navega a la ruta privada que tenda destinada ese rol
+            console.log(res);
         },
         error: (err) => console.log(err),
       });

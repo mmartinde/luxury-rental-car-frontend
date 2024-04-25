@@ -27,8 +27,8 @@ export const routes: Routes = [
         component: RegisterComponent
     },
     { 
-        path: 'not-found', 
-        component: NotFoundComponent 
+        path: 'user', 
+        component: UserComponent
     },
     {
         path:'cars',
@@ -57,6 +57,10 @@ export const routes: Routes = [
         path:"adminCars/addCar",
         component:AddCarComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    { 
+        path: 'not-found', 
+        component: NotFoundComponent 
     },
     { 
         path: '**', 
