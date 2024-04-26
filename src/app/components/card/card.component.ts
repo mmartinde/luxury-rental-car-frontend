@@ -15,7 +15,7 @@ export class CardComponent {
 
   constructor(private route: Router) {}
 
-  navigateToCar(carId: string): void {
+  navigateToCar(carId: any): void {
     this.route.navigate([`cars/${carId}`]);
   }
 }

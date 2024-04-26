@@ -12,7 +12,7 @@
             <i class="fa fa-users fa-bounce "></i><p><strong> Asientos: </strong>{{ car?.seats }}</p>
             <i class="fa fa-code-fork fa-bounce"></i><p><strong> Transmisión: </strong>{{ car?.transmission }}</p>
             <p class="card-text">{{ car?.description }}</p>
-            <button class="rent-button" (click)="goToReservation()">Solicitar Reserva</button>
+            <button class="rent-button" (click)="goToReservation(car?._id)">Solicitar Reserva</button>
         </div>
     
     </div>

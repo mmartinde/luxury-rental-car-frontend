@@ -63,7 +63,7 @@ export class CarComponent {
   // //   }
   // // }
   
-  goToReservation(): void {
-    this.router.navigate(['/contact'])
+  goToReservation(carId: any): void {
+    this.router.navigate([`/contact/${carId}`])
   }
 }
