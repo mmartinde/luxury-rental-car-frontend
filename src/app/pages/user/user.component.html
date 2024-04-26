@@ -1,24 +1,4 @@
 <div class="contenedor">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-        <li [ngbNavItem]="1">
-            <button ngbNavLink>Lista Usuarios</button>
-            <ng-template ngbNavContent>
-                <app-users></app-users>
-            </ng-template>
-        </li>
-        <li [ngbNavItem]="2">
-            <button ngbNavLink>Buscar Usuario</button>
-            <ng-template ngbNavContent>
-                <p>ficha 2</p>
-            </ng-template>
-        </li>
-        <li [ngbNavItem]="3">
-            <button ngbNavLink>Borrar Usuarios</button>
-            <ng-template ngbNavContent>
-                <p>ficha 3</p>
-            </ng-template>
-        </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <app-users></app-users>
     
 </div>
