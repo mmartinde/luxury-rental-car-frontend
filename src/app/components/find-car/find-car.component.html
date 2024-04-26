@@ -1,13 +1,13 @@
 <form [formGroup]="searcherCars" (ngSubmit)="searcherCar()" >
     <div class="input-group space">
         <input type="text" placeholder="Buscar..." formControlName="car" class="form-control">
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-primary" >Buscar</button>
     </div>
     <div class="row justify-content-around space">
         
         <div class="col col-md-3">
             <label id="">Selecciona por Potencia</label>
-            <select class="form-select" name="" id="" formControlName="power" (click)="searchCarPower()" >
+            <select class="form-select" name="" id="" formControlName="power" (click)="searcherCar()" >
                 <option value="">-Seleccionar-</option>
                 <option value="descendant">De mayor a menor</option>
                 <option value="ascendant">De menor a mayor</option>
@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-3">
             <label> Selecciona por Año</label>
-            <select class="form-select" name="" id="" formControlName="year" (click)="searchCarYear()">
+            <select class="form-select" name="" id="" formControlName="year" (click)="searcherCar()">
                 <option value="">-Seleccionar-</option>
                 <option value="newerFirst">Los mas nuevos primero</option>
                 <option value="olderFirst">Los mas antiguos primero</option> 

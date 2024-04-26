@@ -23,7 +23,7 @@ export class FindCarComponent implements OnInit {
   
 
   searcherCars: FormGroup = this.FormBuilder.group({
-    car : new FormControl('', [Validators.required]),
+    car : new FormControl(''),
     transmission: new FormControl(''),
     power: new FormControl(''),
     year: new FormControl('')
@@ -45,75 +45,53 @@ export class FindCarComponent implements OnInit {
     })
   }
 
+  
+
   searcherCar(){
     const carFilterCar = this.searcherCars.get('car')?.value
     const carFilterTransmision = this.searcherCars.get('transmission')?.value
     const carFilterPower = this.searcherCars.get('power')?.value
-    const carFilteryear = this.searcherCars.get('year')?.value
+    const carFilterYear = this.searcherCars.get('year')?.value
 
-    if(carFilterCar || carFilterTransmision){
-      this.carsFiltered = this.cars.filter((i)=>i.make.toLocaleLowerCase().includes(carFilterCar))
-      
-      if(carFilterTransmision === 'Automatic' || 'Manual'){
+
+
+    if(carFilterCar === '' ){
+
+      if(carFilterPower === 'descendant'){
+        this.carsFiltered= this.cars.sort((a,b)=>b.hp - a.hp);
+      console.log('Este es el orden desdendente potencia', this.carsFiltered);
+      }else if(carFilterPower === 'ascendant'){
+        this.carsFiltered = this.cars.sort((a,b)=>a.hp - b.hp);
+        console.log('Este es el orden ascendente potencia', this.carsFiltered);
+      }
+
+      if(carFilterYear === 'newerFirst'){
+        this.carsFiltered = this.cars.sort((a,b)=>b.year -a.year)
+        console.log('Este es el orden desdendente Año', this.carsFiltered);
+      }else if(carFilterYear === 'olderFirst'){
+        this.carsFiltered = this.cars.sort((a,b)=> a.year - b.year)
+        console.log('Este es el orden ascendente año', this.carsFiltered);
+      }
+
+      if(carFilterTransmision === 'Automatic'){
         this.carsFiltered = this.cars.filter((i)=>i.transmission.includes(carFilterTransmision))
         console.log('Este es el coche filtrado por transmission', this.carsFiltered);
-      }else(carFilterTransmision === 'select');{
-        this.carsFiltered
-        console.log('No hay transmisión seleccionada');
+      }else if(carFilterTransmision === 'Manual'){
+        this.carsFiltered = this.cars.filter((i)=>i.transmission.includes(carFilterTransmision))
+        console.log('coche filtrado por transmision manual', this.carsFiltered);
         
       }
-
-    }
-
-  }
-
-
-  searchCar(){
-    const carFilter = this.searcherCars.get('car')?.value
-    console.log('Coche filtrado', carFilter)
-    this.carsFiltered = this.cars.filter((i)=>i.make.toLocaleLowerCase().includes(carFilter))
-    console.log('Este es el coche filtrado',this.carsFiltered);
       
-  }
-   searchCarTransmission(){
-    const carFilter  = this.searcherCars.get('transmission')?.value
-    console.log('Coche filtrado por transmisión automatica', carFilter);
-      if(carFilter === 'Automatic' || 'Manual'){
-        this.carsFiltered = this.cars.filter((i)=>i.transmission.includes(carFilter))
-        console.log('Este es el coche filtrado por transmission', this.carsFiltered);
-      }else(carFilter === 'select');{
-        this.carsFiltered
-        console.log('No hay transmisión seleccionada');
-        
-      }
-    
-  } 
 
-  searchCarPower(){
-    const carFilter = this.searcherCars.get('power')?.value
-    console.log('Coche filtrado por potencia', carFilter);
-      if(carFilter === 'descendant'){
-        this.carsFiltered= this.cars.sort((a,b)=>b.hp - a.hp);
-      console.log('Este es el orden desdendente', this.carsFiltered);
-      }else if(carFilter === 'ascendant'){
-        this.carsFiltered = this.cars.sort((a,b)=>a.hp - b.hp);
-        console.log('Este es el orden ascendente', this.carsFiltered);
-      }else(carFilter === 'select');{
-        this.carsFiltered
-        console.log('No hay potencia seleccionada');
-        
-      }
-  }
-  searchCarYear(){
-    const carFilter = this.searcherCars.get('year')?.value
-    console.log('coche filtrado por año', carFilter);
-    if(carFilter === 'newerFirst'){
-      this.carsFiltered = this.cars.sort((a,b)=>b.year -a.year)
-      console.log('Este es el orden desdendente', this.carsFiltered);
-    }else{
-      this.carsFiltered = this.cars.sort((a,b)=> a.year - b.year)
-      console.log('Este es el orden ascendente', this.carsFiltered);
+    }else if(carFilterCar !== ''){
+      this.carsFiltered = this.cars.filter((i)=>i.make.toLocaleLowerCase().includes(carFilterCar))
+        console.log('Coche filtrado', carFilterCar)
     }
-    
+
   }
+
+  
+ 
+
+
 }
