@@ -25,7 +25,7 @@ export class LoginFormComponent {
   showLoginForm: boolean = true;
   hidePassword: boolean = true;
   faEyeSlash = faEyeSlash ;
-
+  userId: string = "";
 
   ngOnInit() {}
 
@@ -52,6 +52,8 @@ export class LoginFormComponent {
         next: (res: any) => {
           this.userService.setTokenRole(res.result.token, res.result.role),
             this.router.navigate(['/user']);//navega a la ruta privada que tenda destinada ese rol
+            this.userId=res.result.email._id //almacenamos el Id del usuario en la variable 'userId'
+            localStorage.setItem("userId",this.userId) //almacenamos 'userId' en localStorage
             console.log(res);
         },
         error: (err) => console.log(err),
