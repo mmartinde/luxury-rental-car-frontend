@@ -6,22 +6,24 @@
             <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
     </form>
+</div>
+<div class="container-fluid">
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th>id</th>
-                <th>Nombre de Usuario</th>
-                <th>E-mail</th>
-                <th>Rol</th>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col" >E-mail</th>
+                <th scope="col">Rol</th>
             </tr>
         </thead>
         <tbody>
             @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user.id){
                 <tr>
-                    <td>{{ user.id}}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.role }}</td>
+                    <td scope="col">{{ user.id}}</td>
+                    <td scope="col">{{ user.name }}</td>
+                    <td scope="col">{{ user.email }}</td>
+                    <td scope="col">{{ user.role }}</td>
                 </tr>
             }
         </tbody>
