@@ -9,9 +9,10 @@ body, html {
     flex-direction: column;
 }
 
-main {
-    flex: 1;  // Fill available space
-    min-height: 500px;  // Adjust based on your design needs
+.container{
+    margin-top: 50px;
 }
 
-
+main {
+    flex: 1;  // Ensures it takes up all available space
+}
