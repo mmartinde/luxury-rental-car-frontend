@@ -41,7 +41,7 @@ export const routes: Routes = [
         component:CarComponent,
     },
     {
-        path:'contact/:id',
+        path:'contact/',
         component:ContactComponent,
     },
     {
