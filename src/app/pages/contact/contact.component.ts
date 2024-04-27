@@ -12,7 +12,7 @@ import { RentService } from '../../services/rent.service';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -29,38 +29,44 @@ export class ContactComponent implements OnInit {
   ) {
     this.rentForm = this.formBuilder.group({
       dateIn: ['', Validators.required],
-      dateOut: [''],
-      user: ['', Validators.required],
+      dateOut: ['', Validators.required],
+      car: [this.carId, Validators.required],
+      user: [this.userId, Validators.required],
+      price: ['1200', Validators.required], // Donde tenemos los precios?
+      status: ['2', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.loadUserId();
     const id = this.route.snapshot.paramMap.get('id');
+    const storedUserId = localStorage.getItem('userId');
+    // console.log(storedUserId)
+    if (storedUserId !== null) {
+      this.userId = storedUserId;
+      // console.log(id)
+    }
     if (id !== null) {
       this.carId = id;
     } else {
       console.error('No existe ID de coche en los parametros de ruta');
       this.router.navigate(['/error']); // Crearemos una pagina de error, o lo redirige a un 404?
     }
+    this.rentForm = this.formBuilder.group({
+      dateIn: ['', Validators.required],
+      dateOut: ['', Validators.required],
+      car: [id, Validators.required],
+      user: [storedUserId, Validators.required],
+      price: ['1200', Validators.required],
+      status: ['2', Validators.required],
+    });
   }
-
-  loadUserId(): void {
-    const storedUserId = localStorage.getItem('id');
-    if (storedUserId !== null) {
-      this.userId = storedUserId;
-    }
-  }
-
   submitRentRequest() {
     if (this.rentForm.valid) {
-      const rentDetails = {
-        ...this.rentForm.value,
-        car: this.carId,
-      };
-      this.rentService
-        .createRent(rentDetails)
-        .subscribe(() => this.router.navigate(['/requestSent']));
+      console.log(this.rentForm.value);
+      this.rentService.createRent(this.rentForm.value).subscribe({
+        next: (res: any) => this.router.navigate(['/requestSent']),
+        error: (err) => console.error('No se pudo solicitar la renta: ', err),
+      });
     }
   }
 }
