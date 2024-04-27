@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
 
   doLogout(){
     this.UserService.logout()
+    localStorage.clear()
   }
 }
 
