@@ -24,7 +24,7 @@ export class RegisterFormComponent {
     password: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]+[a-zA-Z0-9]{7,}$')]),
     address: new FormControl( null, [Validators.required]),
     phone: new FormControl(null , [Validators.required, Validators.maxLength(9), Validators.pattern('[0-9]') ]),
-    dob: new FormControl(null, [Validators.required, /* Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/) */]),
+    dob: new FormControl(null, [Validators.required]),
     license: new FormControl(null, [Validators.required, Validators.maxLength(10)])
   })
 

@@ -12,6 +12,7 @@ import { UserComponent } from './pages/user/user.component';
 import { AdminCarComponent } from './pages/admin-car/admin-car.component';
 import { EditCarComponent } from './components/admin-car/edit-car/edit-car.component';
 import { AddCarComponent } from './components/admin-car/add-car/add-car.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 export const routes: Routes = [
     {
@@ -47,6 +48,10 @@ export const routes: Routes = [
         path:"adminCars",
         component:AdminCarComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"contact",
+        component:ContactComponent
     },
     {
         path:"adminCars/editCar/:id",
