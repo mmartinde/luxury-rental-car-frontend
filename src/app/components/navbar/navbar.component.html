@@ -8,42 +8,53 @@
         <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 @if ((isToken && isAdmin)){
-                
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/rent">Admin Alquileres</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/adminUsers">Admin Usuarios</a>
-                </li>
-                
-                }
-                @if(isToken){
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" routerLink="/user">Mi cuenta</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" routerLink="/cars">Coches</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/rent">Admin Alquileres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/adminUsers">Admin Usuarios</a>
+                    </li>
+                    <button class="btn btn-sm btn-outline-secondary" type = "button" (click) = "doLogout()" routerLink="/">Cerrar Sesión</button>
+                
+                }
+                @else if(isToken){
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/cars">Coches</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" routerLink="/contact">Contacto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/user">Mi cuenta</a>
+                    </li> 
                 <button class="btn btn-sm btn-outline-secondary" type = "button" (click) = "doLogout()" routerLink="/">Cerrar Sesión</button>
                 }@else{
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/login">Iniciar Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/register">Registrate</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/cars">Coches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/contact">Contacto</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/cars">Coches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/login">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/register">Registrate</a>
+                    </li>
                 }
             </ul>
         </div>
