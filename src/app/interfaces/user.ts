@@ -1,5 +1,5 @@
 export interface User {
-    id:String,
+    _id: String,
     name: String,
     surname: String,
     license: String,
@@ -9,4 +9,3 @@ export interface User {
     phone: String,
     role: String,
 }
-

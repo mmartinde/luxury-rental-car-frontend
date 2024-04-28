@@ -11,4 +11,5 @@ export interface Cars {
   price: number;
   transmission: string;
   description: string;
+  picture: string;
 }
