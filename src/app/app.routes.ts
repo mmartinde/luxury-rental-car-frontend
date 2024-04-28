@@ -14,6 +14,7 @@ import { EditCarComponent } from './components/admin-car/edit-car/edit-car.compo
 import { AddCarComponent } from './components/admin-car/add-car/add-car.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RequestSentComponent } from './pages/request-sent/request-sent.component';
+import { UserRentComponent } from './pages/user-rent/user-rent.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +31,13 @@ export const routes: Routes = [
     },
     { 
         path: 'user', 
-        component: UserComponent
+        component: UserComponent,
+        canActivate:[userProtectGuard]
+    },
+    {
+        path:"user/rent",
+        component:UserRentComponent,
+        canActivate:[userProtectGuard]
     },
     {
         path:'cars',

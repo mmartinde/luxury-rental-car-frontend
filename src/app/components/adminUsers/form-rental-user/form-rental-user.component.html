@@ -1,1 +1,34 @@
-<p>form-rental-user works!</p>
+<div class="container">
+    <form [formGroup]="rentForm" (ngSubmit)="onSubmit()" class="needs-validation">
+        <div class="form-group">
+            <label for="name">usuario</label>
+            
+            <input type="text" id="name" formControlName="user" class="form-control" readonly >
+        </div>
+        
+        <div class="form-group">
+            <label for="car">Coche</label>
+            <input type="text" id="car" formControlName="car" class="form-control" readonly>
+        </div>
+    
+        <div class="form-group">
+            <label for="dateIn">Fecha de alquiler</label>
+            <input type="text" id="dateIn" formControlName="fateIn" class="form-control" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="dateOut">Fecha fin de alquiler</label>
+            <input type="text" id="dateOut" formControlName="dateOut" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Coste del alquiler</label>
+            <input type="text" id="price" formControlName="price" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Estado del alquiler</label>
+            <input type="text" id="status" formControlName="status" class="form-control" readonly>
+        </div>
+    </form>
+</div>
