@@ -7,7 +7,7 @@ import { Cars } from '../../interfaces/cars';
 @Component({
   selector: 'app-cars-layout',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CarsComponent],
   templateUrl: './cars-layout.component.html',
   styleUrl: './cars-layout.component.scss'
 })

@@ -13,14 +13,14 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">Nombre</th>
-                <th scope="col" >E-mail</th>
+                <th scope="col">E-mail</th>
                 <th scope="col">Rol</th>
             </tr>
         </thead>
         <tbody>
-            @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user.id){
+            @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user._id){
                 <tr>
-                    <td scope="col">{{ user.id}}</td>
+                    <td scope="col">{{ user._id }}</td>
                     <td scope="col">{{ user.name }}</td>
                     <td scope="col">{{ user.email }}</td>
                     <td scope="col">{{ user.role }}</td>
