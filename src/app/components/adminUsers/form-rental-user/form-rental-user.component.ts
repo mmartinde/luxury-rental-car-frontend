@@ -1,5 +1,5 @@
-import { RentService } from '../../../services/rent.service';
 import { UserService } from './../../../services/user.service';
+import { RentService } from '../../../services/rent.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Rent } from '../../../interfaces/rent';
@@ -35,12 +35,13 @@ constructor(
 
 ngOnInit(): void {
   const userId:any = localStorage.getItem('userId')
-  this.rentService.getRentbyId(userId).subscribe({
+  this.rentService.getRentByUserId(userId).subscribe({
     next:(res:any)=>{
+      console.log (res)
       this.rent=res as Rent[],
       this.rentForm.patchValue(this.rent)
     },
-    error:(err:string)=>console.log('Error al obtner alquileres', err)
+    error:(err:string)=>console.log('Error al obtener alquileres', err)
   })
 }
 
