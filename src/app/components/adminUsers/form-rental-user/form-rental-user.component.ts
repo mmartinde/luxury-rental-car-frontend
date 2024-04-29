@@ -1,8 +1,8 @@
+import { Rent } from './../../../interfaces/rent';
 import { UserService } from './../../../services/user.service';
 import { RentService } from '../../../services/rent.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Rent } from '../../../interfaces/rent';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class FormRentalUserComponent implements OnInit{
   userId: string | undefined
   rentForm: FormGroup
-  rent: Rent[]=[]
+  rents: Rent[]=[]
 
 constructor(
   private rentService:RentService,
@@ -38,21 +38,24 @@ ngOnInit(): void {
   this.rentService.getRentByUserId(userId).subscribe({
     next:(res:any)=>{
       console.log (res)
-      this.rent=res as Rent[],
-      this.rentForm.patchValue(this.rent)
+      this.rents=res as Rent[],
+      this.rentForm.patchValue(this.rents)
+      console.log (this.rents)
     },
     error:(err:string)=>console.log('Error al obtener alquileres', err)
   })
+  
 }
 
-onSubmit():void{
-  const userId:any=localStorage.getItem("userId")
-  if(this.rentForm.valid){
-    console.log(this.rentForm.value)
-    this.rentService.editRent(userId, this.rentForm.value).subscribe({
-      next:(res:any)=> this.router.navigate(['user/rent']),
-      error:(err:string)=>console.error('Error modificar renta', err)
-    });
-  }    
+getStatusDescription(status: Number): String {
+  switch (status) {
+    case 1:
+      return 'Solicitado';
+    case 2:
+      return 'Rentado';
+    default:
+      return 'Disponible';
+  }
 }
+
 }

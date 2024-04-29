@@ -15,13 +15,10 @@ import { EditCarComponent } from './components/admin-car/edit-car/edit-car.compo
 import { AddCarComponent } from './components/admin-car/add-car/add-car.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RequestSentComponent } from './pages/request-sent/request-sent.component';
-<<<<<<< HEAD
 import { UserRentComponent } from './pages/user-rent/user-rent.component';
-=======
 import { AdminRentComponent } from './pages/admin-rent/admin-rent.component';
 import { EditRentComponent } from './components/admin-rent/edit-rent/edit-rent.component';
 import { AddRentComponent } from './components/admin-rent/add-rent/add-rent.component';
->>>>>>> 3347aca06e61b36063cd302c29a24072a808841a
 
 export const routes: Routes = [
     {
@@ -39,11 +36,6 @@ export const routes: Routes = [
     { 
         path: 'user', 
         component: UserComponent,
-        canActivate:[userProtectGuard]
-    },
-    {
-        path:"user/rent",
-        component:UserRentComponent,
         canActivate:[userProtectGuard]
     },
     {

@@ -1,34 +1,17 @@
 <div class="container">
-    <form [formGroup]="rentForm" (ngSubmit)="onSubmit()" class="needs-validation">
-        <div class="form-group">
-            <label for="name">usuario</label>
-            
-            <input type="text" id="name" formControlName="user" class="form-control" readonly >
-        </div>
-        
-        <div class="form-group">
-            <label for="car">Coche</label>
-            <input type="text" id="car" formControlName="car" class="form-control" readonly>
-        </div>
-    
-        <div class="form-group">
-            <label for="dateIn">Fecha de alquiler</label>
-            <input type="text" id="dateIn" formControlName="fateIn" class="form-control" readonly>
-        </div>
-        
-        <div class="form-group">
-            <label for="dateOut">Fecha fin de alquiler</label>
-            <input type="text" id="dateOut" formControlName="dateOut" class="form-control" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="price">Coste del alquiler</label>
-            <input type="text" id="price" formControlName="price" class="form-control" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="status">Estado del alquiler</label>
-            <input type="text" id="status" formControlName="status" class="form-control" readonly>
-        </div>
-    </form>
+<h2>Historial de Alquileres</h2>
+    @for (rent of rents; track rent._id){
+    <div class="card-group">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{rent.car.make}}</h5>
+                <p class="card-subtitle mb-2 text-muted">{{rent.car.model}}</p>
+                <p class="card-text">Fecha alquiler:{{rent.dateIn}}</p>
+                <p class="card-text">Devolución:{{rent.dateOut}}</p>
+                <p class="card-text">Precio:{{rent.price}}€</p>
+                <p class="card-text">Estado:{{getStatusDescription(rent.status)}}</p>
+            </div>
+        </div>    
+    </div>
+    }
 </div>
