@@ -1,31 +1,32 @@
 <div class="container">
-    <form class="titleInputAndButtonUsers form-inline" [formGroup]="searcherUser" (ngSubmit)="searchUser()">
-        <label class="mr-2">Filtra los usuarios por nombre</label>
-        <div class="input-group">
-            <input type="text" class="form-control" formControlName="user" placeholder="Introduzca nombre" />
-            <button type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-    </form>
-</div>
-<div class="container-fluid">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Rol</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user._id){
+    <div class="search-bar">
+        <input type="text" [formControl]="searchControl" placeholder="Buscar usuario">
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
                 <tr>
-                    <td scope="col">{{ user._id }}</td>
-                    <td scope="col">{{ user.name }}</td>
-                    <td scope="col">{{ user.email }}</td>
-                    <td scope="col">{{ user.role }}</td>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>E-mail</th>
+                    <th>Rol</th>
+                    <th>Opciones</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (user of (usersFiltered.length > 0 ? usersFiltered : users); track user._id){
+                <tr>
+                    <td>{{ user._id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <button class="btn btn-modificar" (click)="navigateToEditUser(user._id)">✍🏻</button>
+                        <button class="btn btn-eliminar" (click)="deleteUser(user._id)">🗑️</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

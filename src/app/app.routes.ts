@@ -1,3 +1,4 @@
+import { FormEditUserComponent } from './components/adminUsers/form-edit-user/form-edit-user.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -54,6 +55,11 @@ export const routes: Routes = [
     {
         path:"adminUsers",
         component:AdminUserComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminUsers/editUser/:id",
+        component:FormEditUserComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
     },
     {
