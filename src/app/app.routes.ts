@@ -14,6 +14,9 @@ import { EditCarComponent } from './components/admin-car/edit-car/edit-car.compo
 import { AddCarComponent } from './components/admin-car/add-car/add-car.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RequestSentComponent } from './pages/request-sent/request-sent.component';
+import { AdminRentComponent } from './pages/admin-rent/admin-rent.component';
+import { EditRentComponent } from './components/admin-rent/edit-rent/edit-rent.component';
+import { AddRentComponent } from './components/admin-rent/add-rent/add-rent.component';
 
 export const routes: Routes = [
     {
@@ -56,6 +59,21 @@ export const routes: Routes = [
     {
         path:"adminCars",
         component:AdminCarComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent",
+        component:AdminRentComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent/editRent/:id",
+        component:EditRentComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent/addRent",
+        component:AddRentComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
     },
     {

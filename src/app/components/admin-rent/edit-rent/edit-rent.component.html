@@ -1,0 +1,36 @@
+<h2>Modificar Renta</h2>
+
+<div class="edit-car-container">
+    <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="car">Coche</label>
+        <input type="text" id="make" formControlName="make" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="user">Cliente</label>
+        <input type="text" id="model" formControlName="model" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="dateIn">Fecha Inicio</label>
+        <input type="text" id="plate" formControlName="plate" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="dateOut">Fecha Final</label>
+        <input type="number" id="year" formControlName="year" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input type="number" id="hp" formControlName="hp" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="status">Estado</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!rentForm.valid"(click)="onSubmit()" >Modificar Coche</button>
+    </form>
+  </div>
+  
