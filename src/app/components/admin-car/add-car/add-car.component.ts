@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CarsService } from '../../../services/cars.service';
 import { Router } from '@angular/router';
+import { Cars } from '../../../interfaces/cars';
 
 @Component({
   selector: 'app-add-car',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AddCarComponent implements OnInit {
   carForm: FormGroup;
+
 
   constructor(
     private formbuilder: FormBuilder,

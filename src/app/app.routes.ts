@@ -1,3 +1,4 @@
+import { FormEditUserComponent } from './components/adminUsers/form-edit-user/form-edit-user.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -14,7 +15,13 @@ import { EditCarComponent } from './components/admin-car/edit-car/edit-car.compo
 import { AddCarComponent } from './components/admin-car/add-car/add-car.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RequestSentComponent } from './pages/request-sent/request-sent.component';
+<<<<<<< HEAD
 import { UserRentComponent } from './pages/user-rent/user-rent.component';
+=======
+import { AdminRentComponent } from './pages/admin-rent/admin-rent.component';
+import { EditRentComponent } from './components/admin-rent/edit-rent/edit-rent.component';
+import { AddRentComponent } from './components/admin-rent/add-rent/add-rent.component';
+>>>>>>> 3347aca06e61b36063cd302c29a24072a808841a
 
 export const routes: Routes = [
     {
@@ -61,8 +68,28 @@ export const routes: Routes = [
         canActivate:[userProtectGuard, adminProtectGuard]
     },
     {
+        path:"adminUsers/editUser/:id",
+        component:FormEditUserComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
         path:"adminCars",
         component:AdminCarComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent",
+        component:AdminRentComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent/editRent/:id",
+        component:EditRentComponent,
+        canActivate:[userProtectGuard, adminProtectGuard]
+    },
+    {
+        path:"adminRent/addRent",
+        component:AddRentComponent,
         canActivate:[userProtectGuard, adminProtectGuard]
     },
     {
