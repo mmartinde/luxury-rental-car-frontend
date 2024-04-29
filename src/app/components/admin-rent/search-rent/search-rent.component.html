@@ -24,9 +24,9 @@
                 @for (rent of (filteredRents.length > 0 ? filteredRents : rents); track rent._id){
                 <tr>
                     <td>{{ rent._id }}</td>
-                    <td>{{ rent.car?.make }}</td>
-                    <td>{{ rent.car?.model }}</td>
-                    <td>{{ rent.user?.email || "No Email"}}</td>
+                    <td>{{ rent.car.make }}</td>
+                    <td>{{ rent.car.model }}</td>
+                    <td>{{ rent.user.email || "No Email"}}</td>
                     <td>{{ rent.dateIn }}</td>
                     <td>{{ rent.dateOut }}</td>
                     <td>{{ rent.price }}</td>
