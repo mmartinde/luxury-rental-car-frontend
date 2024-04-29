@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { RentService } from '../../../services/rent.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-add-rent',
@@ -21,11 +23,13 @@ import { Router } from '@angular/router';
 export class AddRentComponent implements OnInit {
   rentForm: FormGroup;
   cars: Cars[] = [];
+  users: User[] = [];
 
   constructor(
     private formbuilder: FormBuilder,
     private rentService: RentService,
     private carsService: CarsService,
+    private userService: UserService,
     private router: Router
   ) {
     this.rentForm = this.formbuilder.group({
@@ -39,7 +43,8 @@ export class AddRentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchAllCars;
+    this.fetchAllCars();
+    this.fetchAllUsers();
   }
 
   onSubmit(): void {
@@ -48,7 +53,7 @@ export class AddRentComponent implements OnInit {
       this.rentService.createRent(this.rentForm.value).subscribe({
         next: (res: any) => this.router.navigate(['/adminCars']),
         error: (err) =>
-          console.error('No se pudo añadir el coche a Base de Datos: ', err),
+          console.error('No se pudo añadir renta a Base de Datos: ', err),
       });
     }
   }
@@ -56,6 +61,16 @@ export class AddRentComponent implements OnInit {
     this.carsService.getAllCars().subscribe({
       next: (res: any) => {
         this.cars = res as Cars[];
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  fetchAllUsers() {
+    this.userService.getAllUsers().subscribe({
+      next: (res: any) => {
+        this.users = res as User[];
       },
       error: (err) => {
         console.log(err);
