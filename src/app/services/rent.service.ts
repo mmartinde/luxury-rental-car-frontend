@@ -33,6 +33,6 @@ export class RentService {
   }
 
   editRent(id: string, rent: Rent): Observable<any> {
-    return this.http.put(`this.url}/${id}?token=${this.token}`, rent);
+    return this.http.put(`${this.url}/${id}?token=${this.token}`, rent);
   }
 }

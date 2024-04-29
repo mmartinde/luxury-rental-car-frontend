@@ -51,9 +51,9 @@ export class AddRentComponent implements OnInit {
     if (this.rentForm.valid) {
       console.log(this.rentForm.value);
       this.rentService.createRent(this.rentForm.value).subscribe({
-        next: (res: any) => this.router.navigate(['/adminCars']),
+        next: (res: any) => this.router.navigate(['/adminRent']),
         error: (err) =>
-          console.error('No se pudo añadir renta a Base de Datos: ', err),
+          console.error('No se pudo añadir a Base de Datos: ', err),
       });
     }
   }
