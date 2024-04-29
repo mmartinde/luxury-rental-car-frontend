@@ -36,7 +36,13 @@ export class RentService {
       return this.http.put(`${this.url}/${id}?token=${this.token}`, rent)
     }
 
+<<<<<<< HEAD
+  editRent(id: string, rent: Rent): Observable<any> {
+    return this.http.put(`${this.url}/${id}?token=${this.token}`, rent);
+  }
+=======
     getRentByUserId (id: string): Observable<any> {
       return this.http.get(`${this.url}/history/${id}?token=${this.token}`)
     }
+>>>>>>> feature/form-rental-user
 }
