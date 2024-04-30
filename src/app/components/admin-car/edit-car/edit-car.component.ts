@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-car',
@@ -52,8 +53,29 @@ export class EditCarComponent implements OnInit {
     if (this.carForm.valid) {
       console.log(this.carForm.value)
       this.carsService.editCar(this.carId, this.carForm.value).subscribe({
-        next: (res: any) => this.router.navigate(['/adminCars']),
-        error: (err) => console.error('Error modificando el coche: ', err),
+        next: (res: any) => {
+          Swal.fire ({
+            icon: 'success',
+            title: 'Ok',
+            text: 'Coche editado exitosamente!',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/adminCars']);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('Error modificando el coche: ', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se puedo editar el coche!',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          });
+        }
       });
     }
   }
