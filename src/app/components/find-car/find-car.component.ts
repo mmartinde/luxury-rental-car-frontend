@@ -64,6 +64,10 @@ export class FindCarComponent implements OnInit {
         this.carsFiltered = this.cars.sort((a,b)=>a.hp - b.hp);
         console.log('Este es el orden ascendente potencia', this.carsFiltered);
       }
+        else(carFilterPower === '');{
+          this.carsFiltered
+        }
+      
 
       if(carFilterYear === 'newerFirst'){
         this.carsFiltered = this.cars.sort((a,b)=>b.year -a.year)
@@ -71,18 +75,18 @@ export class FindCarComponent implements OnInit {
       }else if(carFilterYear === 'olderFirst'){
         this.carsFiltered = this.cars.sort((a,b)=> a.year - b.year)
         console.log('Este es el orden ascendente año', this.carsFiltered);
+      }else(carFilterYear === '');{
+
       }
 
-      if(carFilterTransmision === 'Automatic'){
+      if(carFilterTransmision === 'Automatico'){
         this.carsFiltered = this.cars.filter((i)=>i.transmission.includes(carFilterTransmision))
         console.log('Este es el coche filtrado por transmission', this.carsFiltered);
       }else if(carFilterTransmision === 'Manual'){
         this.carsFiltered = this.cars.filter((i)=>i.transmission.includes(carFilterTransmision))
         console.log('coche filtrado por transmision manual', this.carsFiltered);
-        
       }
       
-
     }else if(carFilterCar !== ''){
       this.carsFiltered = this.cars.filter((i)=>i.make.toLocaleLowerCase().includes(carFilterCar))
         console.log('Coche filtrado', carFilterCar)

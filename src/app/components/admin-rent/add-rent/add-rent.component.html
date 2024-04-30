@@ -6,19 +6,19 @@
         <label for="car">Coche</label>
         <select id="car" formControlName="car" class="form-control">
             @for (car of cars; track car._id){
-            <option>
+            <option value="{{car._id}}" >
                  {{car.make}} - {{car.model}}
                 </option>
                             }
                     </select>
       </div>
-         
+
       <div class="form-group">
         <label for="user">Cliente</label>
         <select id="user" formControlName="user" class="form-control">
             @for (user of users; track user._id) {
-                <option>
-                    {{user.name}} - {{user.surname}}
+                <option value="{{user._id}}">
+                    {{user.surname}}, {{user.name}}
                 </option>
             }
         </select>
@@ -48,4 +48,4 @@
             <option value="2">Rentado</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!rentForm.valid"(click)="onSubmit()" >Crear Coche</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!rentForm.valid">Crear Renta</button>

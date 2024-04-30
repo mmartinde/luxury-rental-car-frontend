@@ -5,6 +5,7 @@ import { CarsService } from './../../../services/cars.service';
 import { Cars } from '../../../interfaces/cars';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-find-car',
@@ -77,14 +78,33 @@ export class FindCarComponent implements OnInit {
   }
 
   deleteCar(carId: string): void {
-    console.log(carId);
-    this.carsService.deleteCar(carId).subscribe({
-      next: (res) => {
-        this.fetchAllCars();
-      },
-      error: (err) => {
-        console.error('Error borrando coche: err');
-      },
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás recuperar este coche!',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, eliminalo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.carsService.deleteCar(carId).subscribe({
+          next: (res) => {
+            this.fetchAllCars();
+            Swal.fire(
+              '¡Eliminado!',
+              'El coche ha sido eliminado.',
+              'success'
+            );
+          },
+          error: (err) => {
+            console.error('Error borrando coche: ', err);
+            Swal.fire(
+              '¡Error!',
+              'Error al borrar el coche.',
+              'error'
+            );
+          },
+        });
+      }
     });
-  }
-}
+  }}

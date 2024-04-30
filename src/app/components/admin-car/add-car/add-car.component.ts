@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CarsService } from '../../../services/cars.service';
 import { Router } from '@angular/router';
 import { Cars } from '../../../interfaces/cars';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-car',
@@ -42,8 +43,29 @@ export class AddCarComponent implements OnInit {
     if (this.carForm.valid) {
       console.log(this.carForm.value)
       this.carsService.createCar(this.carForm.value).subscribe({
-        next: (res: any) => this.router.navigate(['/adminCars']),
-        error: (err) => console.error('No se pudo añadir el coche a Base de Datos: ', err),
+        next: (res: any) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Ok',
+            text: '¡Coche agregado exitosamente!',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/adminCars']);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('No se pudo añadir el coche a Base de Datos: ', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '¡No se pudo añadir el coche a Base de Datos!',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          });
+        }
       });
     }
   }
