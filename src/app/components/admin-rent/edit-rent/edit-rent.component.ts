@@ -12,6 +12,7 @@ import { RentService } from '../../../services/rent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-rent',
@@ -59,9 +60,29 @@ export class EditRentComponent implements OnInit {
       console.log(this.rentId)
       console.log(rent)
       this.rentService.editRent(this.rentId, rent).subscribe({
-        next: (res: any) => this.router.navigate(['/adminRent']),
-        error: (err) =>
-          console.error('No se pudo modificar renta en Base de Datos: ', err),
+        next: (res: any) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Ok',
+            text: 'Alquiler editado exitosamente!',
+            confirmButtonColor: '3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/adminRent']);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('No se pudo modificar renta en Base de Datos: ', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo editar el alquiler',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          });
+        }
       });
     }
   }

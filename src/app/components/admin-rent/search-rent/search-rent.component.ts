@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Rent } from '../../../interfaces/rent';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search-rent',
@@ -73,17 +74,37 @@ export class SearchRentComponent implements OnInit {
   }
 
   deleteRent(rentId: any): void {
-    console.log(rentId);
-    this.rentService.deleteRent(rentId).subscribe({
-      next: (res) => {
-        this.fetchAllRents();
-      },
-      error: (err) => {
-        console.error('Error borrando coche: err');
-      },
-    });
-  }
-
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás recuperar este alquiler!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, eliminalo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.rentService.deleteRent(rentId).subscribe({
+          next: (res) => {
+            this.fetchAllRents();
+            Swal.fire(
+              '¡Eliminado!',
+              'El alquiler ha sido eliminado.',
+              'success'
+            );
+          },
+          error: (err) => {
+            console.error('Error borrando el alquiler: ', err);
+            Swal.fire(
+              '¡Error!',
+              'Error al borrar el alquiler.',
+              'error'
+            );
+          },
+      });
+    }
+  });
+}
   getStatusDescription(status: Number): String {
     switch (status) {
       case 1:

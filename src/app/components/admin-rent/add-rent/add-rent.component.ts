@@ -12,6 +12,7 @@ import { RentService } from '../../../services/rent.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-rent',
@@ -51,12 +52,33 @@ export class AddRentComponent implements OnInit {
     if (this.rentForm.valid) {
       console.log(this.rentForm.value);
       this.rentService.createRent(this.rentForm.value).subscribe({
-        next: (res: any) => this.router.navigate(['/adminRent']),
-        error: (err) =>
-          console.error('No se pudo añadir a Base de Datos: ', err),
+        next: (res: any) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Ok',
+            text: 'Alquiler agregado exitosamente!',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/adminRent']);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('No se pudo añadir a Base de Datos: ', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo añadir el alquiler a Base de Datos!',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          });
+        }
       });
     }
   }
+
   fetchAllCars() {
     this.carsService.getAllCars().subscribe({
       next: (res: any) => {
@@ -67,6 +89,7 @@ export class AddRentComponent implements OnInit {
       },
     });
   }
+
   fetchAllUsers() {
     this.userService.getAllUsers().subscribe({
       next: (res: any) => {
