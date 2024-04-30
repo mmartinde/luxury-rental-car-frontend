@@ -1,20 +1,7 @@
-import { Subject } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validator, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-
-interface Alert{
-  type:string;
-  message:string;
-}
-
-const ALERTS: Alert[] = [
-  {
-    type: 'success',
-    message: 'This is an success alert',
-  }
-]
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-delete-user',
@@ -24,34 +11,38 @@ const ALERTS: Alert[] = [
   styleUrl: './form-delete-user.component.scss'
 })
 export class FormDeleteUserComponent {
-    alerts: Alert[] = Array.from(ALERTS);
-    eraserUser: FormGroup=this.FormBuilder.group({
-    id: new FormControl(null,[Validators.required]),
-  })
+    eraserUser: FormGroup = this.formbuilder.group({
+    id: new FormControl(null, [Validators.required]),
+  });
 
   constructor(
-    private FormBuilder: FormBuilder,
-    private UserService: UserService,
-  ){
-    this.reset();
-	}
+    private formbuilder: FormBuilder,
+    private userService: UserService,
+  ) {}
 
-	close(alert: Alert) {
-		this.alerts.splice(this.alerts.indexOf(alert), 1);
-	}
-
-	reset() {
-		this.alerts = Array.from(ALERTS);
-	}
-
-  deleteUser(){
-    const id: string =this.eraserUser.get('id')?.value
-    this.UserService.deleteUser(id).subscribe({
-      next:(res:any)=>{
-        ALERTS
-        console.log(res)
+  deleteUser() {
+    const id: string = this.eraserUser.get('id')?.value;
+    this.userService.deleteUser(id).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Ok',
+          text: '¡Usuario eliminado exitosamente!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ok'
+        });
+        console.log(res);
       },
-      error: (err)=>console.log('error al borrar el usuario'),
-    })
+      error: (err) => {
+        console.log('Error al borrar el usuario: ', err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: '¡Error al borrar usuario!',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'Ok'
+        });
+      }
+    });
   }
 }
