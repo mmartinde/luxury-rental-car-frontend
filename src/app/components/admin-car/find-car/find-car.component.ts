@@ -80,27 +80,27 @@ export class FindCarComponent implements OnInit {
   deleteCar(carId: string): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: 'Este coche no se podrá recuperar!',
+      text: '¡No podrás recuperar este coche!',
       icon: 'warning',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminalo',
+      confirmButtonText: '¡Sí, eliminalo!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.carsService.deleteCar(carId).subscribe({
           next: (res) => {
             this.fetchAllCars();
             Swal.fire(
-              'Eliminado',
+              '¡Eliminado!',
               'El coche ha sido eliminado.',
               'success'
             );
           },
           error: (err) => {
-            console.error('Error borrando coche: err');
+            console.error('Error borrando coche: ', err);
             Swal.fire(
-              'Error',
-              'Error al borrar el coche',
+              '¡Error!',
+              'Error al borrar el coche.',
               'error'
             );
           },

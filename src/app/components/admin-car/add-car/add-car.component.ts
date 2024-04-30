@@ -47,7 +47,7 @@ export class AddCarComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title: 'Ok',
-            text: 'Coche agregado exitosamente!',
+            text: '¡Coche agregado exitosamente!',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Ok'
           }).then((result) => {
@@ -61,7 +61,7 @@ export class AddCarComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'No se pudo añadir el coche a Base de Datos!',
+            text: '¡No se pudo añadir el coche a Base de Datos!',
             confirmButtonColor: '#d33',
             confirmButtonText: 'Ok'
           });

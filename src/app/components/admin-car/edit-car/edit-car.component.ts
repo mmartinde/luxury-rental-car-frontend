@@ -57,7 +57,7 @@ export class EditCarComponent implements OnInit {
           Swal.fire ({
             icon: 'success',
             title: 'Ok',
-            text: 'Coche editado exitosamente!',
+            text: '¡Coche editado exitosamente!',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Ok'
           }).then((result) => {
@@ -71,7 +71,7 @@ export class EditCarComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'No se puedo editar el coche!',
+            text: '¡No se pudo editar el coche!',
             confirmButtonColor: '#d33',
             confirmButtonText: 'Ok'
           });
